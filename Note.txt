@@ -1,0 +1,29 @@
+
+
+
+使用Maven创建Spring-boot项目
+
+1.
+配置pom.xml文件
+
+2.
+创建 src/main/resources 源文件目录，并在该目录下创建 application.properties 文件、static 和 templates 的文件夹。
+
+application.properties：用于配置项目运行所需的配置数据。
+
+static：用于存放静态资源，如：css、js、图片等。
+
+templates：用于存放模板文件。
+
+
+启动问题：
+1.如果是tomcat和Spring boot内置的版本不一致。在pom.xml中添加最低版本兼容;
+
+2.如果启动显示地址占用。application.properties中修改端口号 server.port = xxxx;
+
+3.测试在浏览器中输入访问的Controller种的mapping方法名即可
+
+4.停止服务
+4.1 在pom.xml中添加spring-boot-starter-actuator依赖包
+4.2 在application.properties中配置shutdown启用
+4.3 在终端中执行curl -X POST localhost:8086/shutdown
