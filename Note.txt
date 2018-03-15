@@ -27,3 +27,8 @@ templates：用于存放模板文件。
 4.1 在pom.xml中添加spring-boot-starter-actuator依赖包
 4.2 在application.properties中配置shutdown启用
 4.3 在终端中执行curl -X POST localhost:8086/shutdown
+
+
+Spring boot中的数据库操作
+
+1.PA的全称叫做Java Persistence API，JPA是一个基于O/R映射的标准规范。JPA的实现主要有Hibernate、EclipseLink、OpenJPA等
