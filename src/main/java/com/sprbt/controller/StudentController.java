@@ -2,10 +2,9 @@ package com.sprbt.controller;
 
 import java.util.List;
 
-import org.springframework.core.annotation.Order;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,11 +31,13 @@ public class StudentController {
 	
 	
 	@RequestMapping("/save")
+	@org.springframework.cache.annotation.Cacheable(value="usercache", key="'userid' + #id")
 	public Student saveOne(@RequestParam("age") Integer age, @RequestParam("name") String name) {
 		Student s = new Student();
 		s.setAge(age);
 		s.setName(name);
 		return repository.save(s);
+//		return s;
 	}
 	
 	
