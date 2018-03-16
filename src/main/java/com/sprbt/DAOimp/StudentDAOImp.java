@@ -138,5 +138,20 @@ public class StudentDAOImp implements StudentRepository{
 		return null;
 	}
 
+	public List<Student> findByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Student withIdAndNameQuery(Integer id, String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Student setName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }

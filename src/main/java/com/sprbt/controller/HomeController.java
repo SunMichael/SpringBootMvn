@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+import com.sprbt.entity.Student;
+
+@RestController        //默认返回jason数据格式
 public class HomeController {
 
 	@GetMapping("/sendhello")
@@ -24,6 +26,16 @@ public class HomeController {
 		ary[1] = "b";
 		return  ary;
 	}
+	
+	
+	@GetMapping("/getStudent")
+	public Student getStudent() {     
+		Student s = new Student();
+		s.setAge(25);
+		s.setName("sun");
+		return s;
+	}
+	
 	
 	
 //	@PathVariable 是url中的参数，RequestParam 是请求中的参数  key要对应
