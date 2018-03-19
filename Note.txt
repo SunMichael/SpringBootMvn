@@ -32,3 +32,23 @@ templates：用于存放模板文件。
 Spring boot中的数据库操作
 
 1.PA的全称叫做Java Persistence API，JPA是一个基于O/R映射的标准规范。JPA的实现主要有Hibernate、EclipseLink、OpenJPA等
+
+
+
+
+===============  redis =============
+
+1.下载redis包,并解压
+2.在/usr/local 中创建文件夹redis 并把解压的内容拷贝过来， 执行sudo make test ,sudo make install
+3.在redis文件夹下创建log-redis.log     sudo mkfile -n 1m logredis.log
+4.创建bin文件夹 并将src中的mkreleasehdr.sh，redis-benchmark， redis-check-rdb， redis-cli， redis-server拷贝到bin目录
+5.bin文件夹下创建redis.conf文件，并修改其中的内容（protected mode改成no， 129.0.0.1注释掉），其他按网上修改即可，否则会ping不通
+
+
+启动命令 cd 到bin文件夹下。  ./redis-server ./redis.conf    
+查看redis接口         ps -A | grep redis
+结束进程              kill -9 xxx
+
+
+
+

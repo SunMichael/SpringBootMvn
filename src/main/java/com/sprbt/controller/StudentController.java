@@ -2,7 +2,7 @@ package com.sprbt.controller;
 
 import java.util.List;
 
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -19,8 +19,11 @@ import com.sprbt.entity.Student;
 @RequestMapping("/student")
 public class StudentController {
 
-	private StudentRepository repository ;    
+	@Autowired
+	private StudentRepository repository ;
+	
 	private PageSortDao psDao ;
+	
 	
 	@RequestMapping("/getAllStudent")
 	public List<Student> getAllStudentInfo(){
@@ -31,13 +34,15 @@ public class StudentController {
 	
 	
 	@RequestMapping("/save")
-	@org.springframework.cache.annotation.Cacheable(value="usercache", key="'userid' + #id")
+	@org.springframework.cache.annotation.Cacheable(value="usercache", key="'userid' + #id")  //redis缓存 key=useridxx
 	public Student saveOne(@RequestParam("age") Integer age, @RequestParam("name") String name) {
 		Student s = new Student();
 		s.setAge(age);
 		s.setName(name);
-		return repository.save(s);
-//		return s;
+		
+		s = repository.save(s);
+	    System.out.println("save student :" + s);	
+		return s;
 	}
 	
 	
