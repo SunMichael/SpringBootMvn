@@ -50,5 +50,5 @@ Spring boot中的数据库操作
 结束进程              kill -9 xxx
 
 
-
+主要使用注释@Cacheable，@CachePut ，@CacheEvict 
 

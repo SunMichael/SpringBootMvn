@@ -3,6 +3,9 @@ package com.sprbt.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -34,7 +37,7 @@ public class StudentController {
 	
 	
 	@RequestMapping("/save")
-	@org.springframework.cache.annotation.Cacheable(value="usercache", key="'userid' + #id")  //redis缓存 key=useridxx
+	@org.springframework.cache.annotation.Cacheable(value="usercache", key="'userid' + #id")  //redis缓存 key=useridxx ，value是缓存名称
 	public Student saveOne(@RequestParam("age") Integer age, @RequestParam("name") String name) {
 		Student s = new Student();
 		s.setAge(age);
@@ -51,7 +54,8 @@ public class StudentController {
 		return repository.findOne(id);
 	}
 	
-	@RequestMapping("/findByName/{name}")
+	@RequestMapping("/findByName/{name}")                                             //unless是指结果不为空，再加入缓存
+	@Cacheable(value="studentCache",key="'student'+#name",unless="#result==null")     //用在数据查询上，使用#name获取方法参数，如果参数是定义对象如Student，可以使用#student.name来获取值
 	public List<Student> findByName(@PathVariable("name") String name){
 		
 		return repository.findByName(name);
@@ -59,6 +63,7 @@ public class StudentController {
 	
 	
 	@RequestMapping("/update")
+	@CachePut(value="studentCache",key="#name",condition="#id<='100'")            //该注释应用在数据新增、修改数据,condition为条件，可以使用#result获取方法返回的结果
 	public Student updateInfo(@RequestParam("id") Integer id,
 			                  @RequestParam("name") String name,
 			                  @RequestParam("age") Integer age) {
@@ -69,6 +74,7 @@ public class StudentController {
 	}
 	
 	@RequestMapping("/delete/{id}")
+	@CacheEvict(value="studentCache",key="'student'+#id")               //该注释应用在移除数据缓存
 	public void delete(@PathVariable(value = "id") Integer id) {
 		repository.delete(id);
 	}
