@@ -12,7 +12,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +23,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.sprbt.DAO.UserMapper;
 import com.sprbt.entity.User;
 
-import ch.qos.logback.classic.Logger;
 
 @RestController
 @RequestMapping("/user")
@@ -113,6 +111,12 @@ public class UserController {
                  out.write(file.getBytes());
                  out.flush();
                  out.close();
+                 
+                 User s = userMapper.findById(id);
+                 s.setImg(dest.getPath());
+                 userMapper.updateUser(s);
+                 
+                 System.out.println(" img url: " + dest.getPath() + "\n : "+ dest.toString() );
                  
 				} catch (IOException e) {
 				  System.out.println(" image upload fail: " + e.getMessage());	

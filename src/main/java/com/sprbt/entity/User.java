@@ -23,6 +23,18 @@ public class User {
 	@Column(nullable = false )
 	private String regTime;
 
+	private String img;
+	
+	
+	
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
 	public Long getId() {
 		return id;
 	}

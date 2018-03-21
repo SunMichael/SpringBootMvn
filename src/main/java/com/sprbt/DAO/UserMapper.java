@@ -33,7 +33,7 @@ public interface UserMapper {     //使用mybatis
 	})
 	User findById(long id);
 	
-	@Update("UPDATE user SET name=#{name},password=#{password} WHERE id=#{id}")
+	@Update("UPDATE user SET name=#{name},password=#{password},img=#{img} WHERE id=#{id}")
 	void updateUser(User user);
 
 	@Delete("DELETE FROM user WHERE id=#{id}")
