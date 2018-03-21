@@ -29,14 +29,14 @@ templates：用于存放模板文件。
 4.3 在终端中执行curl -X POST localhost:8086/shutdown
 
 
-Spring boot中的数据库操作
+========= Spring boot中的数据库操作 jpaRepository ========
 
 1.PA的全称叫做Java Persistence API，JPA是一个基于O/R映射的标准规范。JPA的实现主要有Hibernate、EclipseLink、OpenJPA等
 
 
 
 
-===============  redis =============
+===============  redis数据缓存 =============
 
 1.下载redis包,并解压
 2.在/usr/local 中创建文件夹redis 并把解压的内容拷贝过来， 执行sudo make test ,sudo make install
@@ -51,4 +51,19 @@ Spring boot中的数据库操作
 
 
 主要使用注释@Cacheable，@CachePut ，@CacheEvict 
+
+
+
+=============== mybatis ==============
+
+1.在pom文件中配置mybatis包
+2.在Application.properties中配置mysql连接
+3.使用@Mapper来注释需要有sql语句执行的接口
+4.使用@Select ，@Update， @Insert，@Delete来进行Crud操作，@Results修饰返回的结果，实体类属性和数据库字段对应，如果两者一致就不需要使用
+
+
+=========  mysql连接问题 ===========
+如果在pom文件中配置mysql包 但运行时显示找不到jdbc.driver,可以手动添加mysql包到项目中，另外最新的jdbc驱动类名是com.mysql.cj.jdbc.Driver
+
+
 

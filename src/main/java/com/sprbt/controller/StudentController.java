@@ -44,6 +44,7 @@ public class StudentController {
 		s.setName(name);
 		
 		s = repository.save(s);
+		
 	    System.out.println("save student :" + s);	
 		return s;
 	}

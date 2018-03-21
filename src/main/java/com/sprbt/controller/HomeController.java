@@ -33,6 +33,9 @@ public class HomeController {
 		Student s = new Student();
 		s.setAge(25);
 		s.setName("sun");
+		
+		System.out.println("test infor");
+		
 		return s;
 	}
 	

@@ -31,8 +31,8 @@ public class Student {
 	 }
 
 	@Id
-	@GenericGenerator(name = "generator", strategy = "increment")
-	@GeneratedValue(generator = "generator", strategy = GenerationType.TABLE)
+//	@GenericGenerator(name = "generator", strategy = "increment")
+//	@GeneratedValue(generator = "generator", strategy = GenerationType.TABLE)
 	public Integer getId() {
 		return id;
 	}
