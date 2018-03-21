@@ -110,13 +110,9 @@ public class UserController {
 //                 file.transferTo(dest);
                  
                  BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(dest));
-
                  out.write(file.getBytes());
-
                  out.flush();
-
                  out.close();
-                 
                  
 				} catch (IOException e) {
 				  System.out.println(" image upload fail: " + e.getMessage());	
