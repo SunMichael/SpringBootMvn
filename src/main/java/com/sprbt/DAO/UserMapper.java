@@ -12,7 +12,6 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
-import org.springframework.data.repository.query.Param;
 
 import com.sprbt.entity.User;
 
@@ -20,8 +19,8 @@ import com.sprbt.entity.User;
 public interface UserMapper {     //使用mybatis           
 
 	
-	@Insert("INSERT INTO user (name,age) VALUES(#{name},#{age})")
-	int addUser(@Param("name")String name , @Param("age") int age);
+	@Insert("INSERT INTO user (name,password,reg_time) VALUES(#{name},#{password},#{regTime})")   //这里直接写实体类和数据库字段对应的属性名称就行
+	void addUser(User user);
 	
 	
 	@Select("SELECT * FROM user")
@@ -32,13 +31,13 @@ public interface UserMapper {     //使用mybatis
 		@Result(property = "name",column="name"),
 		@Result(property = "password",column="password")
 	})
-	User findById(@Param("id")String id);
+	User findById(long id);
 	
-	@Update("UPDATE user SET name=#{name} WHERE id=#{id}")
-	void updateById(@Param("id")String id, @Param("name")String name);
+	@Update("UPDATE user SET name=#{name},password=#{password} WHERE id=#{id}")
+	void updateUser(User user);
 
 	@Delete("DELETE FROM user WHERE id=#{id}")
-	void deleteById(@Param("id")String id);
+	void deleteById(long id);
 	
 	
 }

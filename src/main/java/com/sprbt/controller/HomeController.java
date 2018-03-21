@@ -42,8 +42,8 @@ public class HomeController {
 	
 	
 //	@PathVariable 是url中的参数，RequestParam 是请求中的参数  key要对应
-	@RequestMapping(value = "/user/{userid}",method = RequestMethod.GET,consumes = "application/json")
-	public String getUserInfo(@PathVariable String userid, @RequestParam String pwd) {
+	@RequestMapping(value = "/user/welcome",method = RequestMethod.GET,consumes = "application/json")
+	public String getUserInfo(@RequestParam String userid, @RequestParam String pwd) {
 		
 		return "welcome," + userid;
 	}

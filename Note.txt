@@ -62,8 +62,29 @@ templates：用于存放模板文件。
 4.使用@Select ，@Update， @Insert，@Delete来进行Crud操作，@Results修饰返回的结果，实体类属性和数据库字段对应，如果两者一致就不需要使用
 
 
+=========== mapping注释 =============
+
+@GetMapping 是@RequestMapping(method = RequestMethod.GET)的缩写
+
+@PathVariable 是取url上路径的参数  例如: /user/welcome/123
+
+@RequestParam 是取请求的请求参数  例如:  /user/welcome?id=123   GET,POST都可以
+
+@RequestBody  是取body里的参数 转成实例对象当参数，请求参数必须是application/json ,参数类型是json字符串，默认是form-data表单提交
+
 =========  mysql连接问题 ===========
 如果在pom文件中配置mysql包 但运行时显示找不到jdbc.driver,可以手动添加mysql包到项目中，另外最新的jdbc驱动类名是com.mysql.cj.jdbc.Driver
+
+
+
+
+
+
+
+
+
+
+
 
 
 
